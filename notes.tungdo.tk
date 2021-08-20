@@ -1,0 +1,13 @@
+server {
+    listen 80;
+    server_name notes.tungdo.tk;
+
+    location /static {
+        root /var/www/notes.example.com;
+    }
+    
+    location / {
+        include uwsgi_params;
+        uwsgi_pass unix:/var/run/uwsgi/notes.sock;
+    }
+}
